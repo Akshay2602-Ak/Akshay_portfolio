@@ -131,42 +131,63 @@
       pointer-events: none;
     }
 
-    /* CURSOR */
-    #cursor {
-      width: 10px;
-      height: 10px;
-      background: var(--cyan);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 99999;
-      box-shadow: 0 0 12px var(--glow), 0 0 24px var(--glow);
-      mix-blend-mode: screen;
-      transition: width .2s, height .2s, background .2s, box-shadow .2s;
-    }
+    /* 3D NEON CURSOR */
+#cursor {
+  width: 18px;
+  height: 18px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0%, var(--cyan) 45%, transparent 70%);
+  box-shadow:
+    0 0 12px var(--cyan),
+    0 0 30px var(--cyan),
+    0 0 60px var(--glow);
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+  transition: width .25s ease, height .25s ease, box-shadow .25s ease;
+}
 
-    #cursor-ring {
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(0, 229, 255, .55);
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 99998;
-      transition: border-color .3s, transform .3s;
-    }
+#cursor-ring {
+  width: 48px;
+  height: 48px;
+  position: fixed;
+  pointer-events: none;
+  z-index: 99998;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 229, 255, .7);
+  box-shadow:
+    0 0 18px rgba(0, 229, 255, .5),
+    inset 0 0 18px rgba(0, 229, 255, .2);
+  transform: translate(-50%, -50%);
+  transition: transform .25s ease, border-color .25s ease;
+}
 
-    #cursor.hover {
-      width: 18px;
-      height: 18px;
-      background: var(--orange);
-      box-shadow: 0 0 20px var(--orange);
-    }
+.cursor-trail {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99997;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 12px var(--cyan);
+  transform: translate(-50%, -50%);
+}
 
-    #cursor-ring.hover {
-      border-color: var(--orange);
-      transform: scale(1.7);
-    }
+#cursor.hover {
+  width: 34px;
+  height: 34px;
+  background: radial-gradient(circle, #fff 0%, var(--orange) 45%, transparent 75%);
+  box-shadow:
+    0 0 18px var(--orange),
+    0 0 45px var(--orange),
+    0 0 80px rgba(255, 107, 53, .7);
+}
+
+#cursor-ring.hover {
+  border-color: var(--orange);
+  transform: translate(-50%, -50%) scale(1.7) rotate(45deg);
+}
 
     /* NAV */
     nav {
@@ -1823,36 +1844,85 @@
     }
     drawP();
 
-    // ── CURSOR ──
-    const cursor = document.getElementById('cursor');
-    const ring = document.getElementById('cursor-ring');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    const trail = Array.from({ length: 10 }, () => {
-      const d = document.createElement('div');
-      d.style.cssText = 'position:fixed;border-radius:50%;background:#00e5ff;pointer-events:none;z-index:99997;';
-      document.body.appendChild(d); return d;
-    });
-    const trailPos = Array(10).fill().map(() => ({ x: 0, y: 0 }));
+   // ── 3D NEON JARVIS CURSOR ──
+const cursor = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
 
-    addEventListener('mousemove', e => {
-      mx = e.clientX; my = e.clientY; mouse.x = mx; mouse.y = my;
-      cursor.style.left = mx - 5 + 'px'; cursor.style.top = my - 5 + 'px';
-      trailPos.unshift({ x: mx, y: my }); trailPos.pop();
-      trail.forEach((d, i) => {
-        const s = Math.max(1, 6 - i * 0.5);
-        d.style.cssText += `left:${trailPos[i].x - s / 2}px;top:${trailPos[i].y - s / 2}px;width:${s}px;height:${s}px;opacity:${(1 - i / 10) * 0.35};`;
-      });
+let mx = 0, my = 0;
+let cx = 0, cy = 0;
+let rx = 0, ry = 0;
+
+const trails = Array.from({ length: 14 }, (_, i) => {
+  const d = document.createElement('div');
+  d.className = 'cursor-trail';
+  document.body.appendChild(d);
+
+  return {
+    el: d,
+    x: 0,
+    y: 0,
+    size: 10 - i * 0.55,
+    opacity: 0.35 - i * 0.02
+  };
+});
+
+window.addEventListener('mousemove', e => {
+  mx = e.clientX;
+  my = e.clientY;
+
+  if (typeof mouse !== 'undefined') {
+    mouse.x = mx;
+    mouse.y = my;
+  }
+});
+
+function animateCursor() {
+  cx += (mx - cx) * 0.35;
+  cy += (my - cy) * 0.35;
+
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+
+  cursor.style.left = cx + 'px';
+  cursor.style.top = cy + 'px';
+
+  ring.style.left = rx + 'px';
+  ring.style.top = ry + 'px';
+
+  let tx = mx;
+  let ty = my;
+
+  trails.forEach((trail, i) => {
+    trail.x += (tx - trail.x) * 0.25;
+    trail.y += (ty - trail.y) * 0.25;
+
+    trail.el.style.left = trail.x + 'px';
+    trail.el.style.top = trail.y + 'px';
+    trail.el.style.width = trail.size + 'px';
+    trail.el.style.height = trail.size + 'px';
+    trail.el.style.opacity = Math.max(trail.opacity, 0);
+
+    tx = trail.x;
+    ty = trail.y;
+  });
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+document.querySelectorAll('a, button, .project-card, .skill-category, .stat-box, .tag, .btn, .contact-link')
+  .forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.classList.add('hover');
+      ring.classList.add('hover');
     });
-    function animRing() {
-      rx += (mx - rx - 19) * 0.1; ry += (my - ry - 19) * 0.1;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
-    }
-    animRing();
-    document.querySelectorAll('a,button,.project-card,.skill-category,.stat-box,.tag,.btn,.contact-link').forEach(el => {
-      el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
-      el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+
+    el.addEventListener('mouseleave', () => {
+      cursor.classList.remove('hover');
+      ring.classList.remove('hover');
     });
+  });
 
     // ── TYPEWRITER ──
     const phrases = ['Oracle Apps DBA', 'Full-Stack Developer', 'Shell Script Automator', 'GenAI Explorer', 'CI/CD Engineer', 'PL/SQL Developer'];
