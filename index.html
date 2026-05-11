@@ -9,19 +9,40 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <style>
+    /* REMOVE DEFAULT CURSOR */
+* {
+  cursor: none !important;
+}
+
+a,
+button,
+.project-card,
+.skill-category,
+.tag,
+.btn,
+.contact-link,
+nav a {
+  cursor: none !important;
+}
     :root {
-      --bg: #03050a;
-      --bg2: #060c14;
-      --cyan: #00e5ff;
-      --teal: #00bfa5;
-      --glow: #00e5ffaa;
-      --glass: rgba(0, 229, 255, 0.04);
-      --glass-border: rgba(0, 229, 255, 0.15);
-      --text: #e0f7fa;
-      --muted: #607d8b;
-      --white: #ffffff;
-      --orange: #ff6b35;
-    }
+
+  --bg: #050505;
+  --bg2: #0f0f0f;
+
+  --cyan: #ff7b00;
+  --teal: #ff9f43;
+
+  --glow: rgba(255, 123, 0, 0.55);
+
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 123, 0, 0.18);
+
+  --text: #f5f5f5;
+  --muted: #9c9c9c;
+  --white: #ffffff;
+
+  --orange: #ff7b00;
+}
 
     *,
     *::before,
@@ -35,14 +56,16 @@
       scroll-behavior: smooth;
     }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Syne', sans-serif;
-      overflow-x: hidden;
-      cursor: none;
-    }
-
+ body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 123, 0, .16), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, .05), transparent 30%),
+    linear-gradient(135deg, #050505 0%, #0f0f0f 45%, #000000 100%);
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
     /* LOADER */
     #loader {
       position: fixed;
@@ -131,62 +154,48 @@
       pointer-events: none;
     }
 
-    /* 3D NEON CURSOR */
+ /* 3D ARROW CYBER CURSOR */
 #cursor {
-  width: 18px;
-  height: 18px;
   position: fixed;
+  width: 28px;
+  height: 28px;
   pointer-events: none;
   z-index: 99999;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0%, var(--cyan) 45%, transparent 70%);
+  transform: translate(-4px, -4px) rotate(-20deg);
+  background: linear-gradient(135deg, #ffffff, var(--cyan), var(--orange));
+  clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
   box-shadow:
     0 0 12px var(--cyan),
-    0 0 30px var(--cyan),
-    0 0 60px var(--glow);
-  transform: translate(-50%, -50%);
-  mix-blend-mode: screen;
-  transition: width .25s ease, height .25s ease, box-shadow .25s ease;
+    0 0 28px var(--glow);
+  transition: transform .18s ease, width .18s ease, height .18s ease;
 }
 
-#cursor-ring {
-  width: 48px;
-  height: 48px;
-  position: fixed;
-  pointer-events: none;
-  z-index: 99998;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 229, 255, .7);
-  box-shadow:
-    0 0 18px rgba(0, 229, 255, .5),
-    inset 0 0 18px rgba(0, 229, 255, .2);
-  transform: translate(-50%, -50%);
-  transition: transform .25s ease, border-color .25s ease;
+#cursor::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  background: #03050a;
+  clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
+  opacity: .65;
 }
 
 .cursor-trail {
   position: fixed;
+  width: 8px;
+  height: 8px;
   pointer-events: none;
-  z-index: 99997;
+  z-index: 99998;
   border-radius: 50%;
   background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
+  box-shadow: 0 0 18px var(--cyan);
   transform: translate(-50%, -50%);
 }
 
 #cursor.hover {
-  width: 34px;
-  height: 34px;
-  background: radial-gradient(circle, #fff 0%, var(--orange) 45%, transparent 75%);
-  box-shadow:
-    0 0 18px var(--orange),
-    0 0 45px var(--orange),
-    0 0 80px rgba(255, 107, 53, .7);
-}
-
-#cursor-ring.hover {
-  border-color: var(--orange);
-  transform: translate(-50%, -50%) scale(1.7) rotate(45deg);
+  width: 42px;
+  height: 42px;
+  transform: translate(-4px, -4px) rotate(15deg) scale(1.15);
+  background: linear-gradient(135deg, #ffffff, var(--orange), var(--cyan));
 }
 
     /* NAV */
@@ -263,25 +272,28 @@
       z-index: 1;
     }
 
-    .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image: linear-gradient(rgba(0, 229, 255, .05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, .05) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
-      animation: grid-move 20s linear infinite;
-    }
+.hero-grid {
+  position: absolute;
+  inset: -50%;
+  background:
+    linear-gradient(rgba(255, 123, 0, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 123, 0, .08) 1px, transparent 1px);
+  background-size: 70px 70px;
+  transform: perspective(900px) rotateX(62deg) translateY(-160px);
+  transform-origin: center;
+  animation: grid3dMove 10s linear infinite;
+  opacity: .65;
+}
 
-    @keyframes grid-move {
-      0% {
-        background-position: 0 0
-      }
+@keyframes grid3dMove {
+  0% {
+    background-position: 0 0;
+  }
 
-      100% {
-        background-position: 60px 60px
-      }
-    }
-
+  100% {
+    background-position: 70px 70px;
+  }
+}
     .scanline {
       position: absolute;
       left: 0;
@@ -310,31 +322,31 @@
     }
 
     .orb-1 {
-      width: 500px;
-      height: 500px;
-      background: rgba(0, 229, 255, .07);
-      right: 0;
-      top: -100px;
-      animation: o1 10s ease-in-out infinite;
-    }
+  width: 520px;
+  height: 520px;
+  background: rgba(255, 123, 0, .16);
+  right: -80px;
+  top: -120px;
+  animation: o1 10s ease-in-out infinite;
+}
 
-    .orb-2 {
-      width: 300px;
-      height: 300px;
-      background: rgba(0, 191, 165, .09);
-      right: 20%;
-      bottom: 10%;
-      animation: o2 8s ease-in-out infinite;
-    }
+.orb-2 {
+  width: 340px;
+  height: 340px;
+  background: rgba(255, 159, 67, .13);
+  right: 22%;
+  bottom: 8%;
+  animation: o2 8s ease-in-out infinite;
+}
 
-    .orb-3 {
-      width: 200px;
-      height: 200px;
-      background: rgba(255, 107, 53, .06);
-      left: 5%;
-      bottom: 25%;
-      animation: o3 12s ease-in-out infinite;
-    }
+.orb-3 {
+  width: 240px;
+  height: 240px;
+  background: rgba(255, 255, 255, .06);
+  left: 5%;
+  bottom: 25%;
+  animation: o3 12s ease-in-out infinite;
+}
 
     @keyframes o1 {
 
@@ -781,7 +793,7 @@
     }
 
     .stat-box:hover {
-      border-color: rgba(0, 229, 255, .3);
+      border-color: #ff7b00(0, 229, 255, .3);
       transform: scale(1.02);
     }
 
@@ -1124,7 +1136,7 @@
     }
 
     .project-card:hover {
-      border-color: rgba(0, 229, 255, .35);
+      border-color: #ff7b00(0, 229, 255, .35);
       box-shadow: 0 30px 70px rgba(0, 0, 0, .5), 0 0 40px rgba(0, 229, 255, .1);
     }
 
@@ -1132,7 +1144,7 @@
       font-family: 'Orbitron', monospace;
       font-size: .62rem;
       letter-spacing: .3em;
-      color: rgba(0, 229, 255, .25);
+      color: #ff7b00(0, 229, 255, .25);
       margin-bottom: 18px;
     }
 
@@ -1164,7 +1176,7 @@
       letter-spacing: .15em;
       padding: 4px 10px;
       border: 1px solid rgba(0, 229, 255, .18);
-      color: rgba(0, 229, 255, .65);
+      color: #ff7b00(0, 229, 255, .65);
       border-radius: 2px;
       transition: all .3s;
     }
@@ -1172,7 +1184,7 @@
     .stack-tag:hover {
       background: rgba(0, 229, 255, .1);
       color: var(--cyan);
-      border-color: rgba(0, 229, 255, .5);
+      border-color: #ff7b00(0, 229, 255, .5);
     }
 
     /* EDUCATION */
@@ -1489,7 +1501,6 @@
 
   <canvas id="particles"></canvas>
   <div id="cursor"></div>
-  <div id="cursor-ring"></div>
 
   <nav id="navbar">
     <a href="#about">About</a>
@@ -1508,7 +1519,8 @@
 
     <p class="hero-label">Oracle DBA · Full-Stack Dev · GenAI · Coimbatore, IN</p>
     <h1 class="hero-name">
-      <span class="line">AKSHAYA</span>
+      <!-- <span class="line" data-text="AKSHAY">AKSHAY</span> -->
+      <span class="line">AKSHAY</span>
       <span class="line" data-text="KUMAR T">KUMAR T</span>
     </h1>
     <p class="hero-role">Building resilient Oracle EBS systems, crafting full-stack web experiences,<br>and pioneering
@@ -1533,7 +1545,7 @@
           engineering systems that are as robust as they are elegant. Currently at <strong>Cognizant Technology
             Solutions</strong>, I manage Oracle EBS R12 environments and architect automation pipelines.</p>
         <p>My background blends deep <strong>database engineering</strong> — RMAN, PL/SQL, Flashback, Data Guard — with
-          modern DevOps tooling like <strong>Jenkins, Docker, and Kubernetes</strong>. On the dev side, I build
+          modern DevOps tooling like <strong>Jenkins, Docker</strong>. On the dev side, I build
           full-stack web apps with Node.js and MongoDB.</p>
         <p>Right now, I'm channeling curiosity into <strong>Generative AI & LLM integration</strong>, exploring how
           intelligent automation can transform enterprise Oracle workflows.</p>
@@ -1625,7 +1637,7 @@
     <div class="timeline">
       <div class="timeline-item">
         <div class="timeline-dot"></div>
-        <div class="timeline-date">Oct 2025 — Apr 2026</div>
+        <div class="timeline-date">Oct 2025 — May 2026</div>
         <div class="timeline-role">Oracle Apps DBA</div>
         <div class="timeline-company">Cognizant Technology Solutions (CTS)</div>
         <div class="timeline-desc">
@@ -1803,7 +1815,7 @@
         this.sz = Math.random() * 1.4 + 0.3;
         this.vx = (Math.random() - 0.5) * 0.35; this.vy = (Math.random() - 0.5) * 0.35;
         this.op = Math.random() * 0.5 + 0.1;
-        this.c = Math.random() > 0.82 ? '#ff6b35' : '#00e5ff';
+        this.c = Math.random() > 0.82 ? '#ffffff' : '#ff7b00';
       }
       update() {
         this.x += this.vx; this.y += this.vy;
@@ -1828,7 +1840,7 @@
           const d = Math.sqrt(dx * dx + dy * dy);
           if (d < 95) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(0,229,255,${(1 - d / 95) * 0.1})`;
+            ctx.strokeStyle = `rgba(255,123,0,${(1 - d / 95) * 0.1})`;
             ctx.lineWidth = 0.4;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -1844,15 +1856,13 @@
     }
     drawP();
 
-   // ── 3D NEON JARVIS CURSOR ──
+// ── 3D ARROW CYBER CURSOR ──
 const cursor = document.getElementById('cursor');
-const ring = document.getElementById('cursor-ring');
 
 let mx = 0, my = 0;
 let cx = 0, cy = 0;
-let rx = 0, ry = 0;
 
-const trails = Array.from({ length: 14 }, (_, i) => {
+const trails = Array.from({ length: 16 }, (_, i) => {
   const d = document.createElement('div');
   d.className = 'cursor-trail';
   document.body.appendChild(d);
@@ -1861,8 +1871,8 @@ const trails = Array.from({ length: 14 }, (_, i) => {
     el: d,
     x: 0,
     y: 0,
-    size: 10 - i * 0.55,
-    opacity: 0.35 - i * 0.02
+    size: Math.max(2, 9 - i * 0.45),
+    opacity: Math.max(0.05, 0.45 - i * 0.025)
   };
 });
 
@@ -1877,30 +1887,24 @@ window.addEventListener('mousemove', e => {
 });
 
 function animateCursor() {
-  cx += (mx - cx) * 0.35;
-  cy += (my - cy) * 0.35;
-
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
+  cx += (mx - cx) * 0.45;
+  cy += (my - cy) * 0.45;
 
   cursor.style.left = cx + 'px';
   cursor.style.top = cy + 'px';
 
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-
   let tx = mx;
   let ty = my;
 
-  trails.forEach((trail, i) => {
-    trail.x += (tx - trail.x) * 0.25;
-    trail.y += (ty - trail.y) * 0.25;
+  trails.forEach(trail => {
+    trail.x += (tx - trail.x) * 0.28;
+    trail.y += (ty - trail.y) * 0.28;
 
     trail.el.style.left = trail.x + 'px';
     trail.el.style.top = trail.y + 'px';
     trail.el.style.width = trail.size + 'px';
     trail.el.style.height = trail.size + 'px';
-    trail.el.style.opacity = Math.max(trail.opacity, 0);
+    trail.el.style.opacity = trail.opacity;
 
     tx = trail.x;
     ty = trail.y;
@@ -1915,12 +1919,10 @@ document.querySelectorAll('a, button, .project-card, .skill-category, .stat-box,
   .forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('hover');
-      ring.classList.add('hover');
     });
 
     el.addEventListener('mouseleave', () => {
       cursor.classList.remove('hover');
-      ring.classList.remove('hover');
     });
   });
 
