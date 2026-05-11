@@ -5,44 +5,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Akshaya Kumar T — Oracle DBA & Full-Stack Developer</title>
+  <link rel="icon" href="ak-logo.png">
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Syne:wght@300;400;500;600&display=swap"
     rel="stylesheet">
   <style>
     /* REMOVE DEFAULT CURSOR */
-* {
-  cursor: none !important;
-}
+    * {
+      cursor: none !important;
+    }
 
-a,
-button,
-.project-card,
-.skill-category,
-.tag,
-.btn,
-.contact-link,
-nav a {
-  cursor: none !important;
-}
+    a,
+    button,
+    .project-card,
+    .skill-category,
+    .tag,
+    .btn,
+    .contact-link,
+    nav a {
+      cursor: none !important;
+    }
+
     :root {
 
-  --bg: #050505;
-  --bg2: #0f0f0f;
+      --bg: #050505;
+      --bg2: #0f0f0f;
 
-  --cyan: #ff7b00;
-  --teal: #ff9f43;
+      --cyan: #ff7b00;
+      --teal: #ff9f43;
 
-  --glow: rgba(255, 123, 0, 0.55);
+      --glow: rgba(255, 123, 0, 0.55);
 
-  --glass: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(255, 123, 0, 0.18);
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 123, 0, 0.18);
 
-  --text: #f5f5f5;
-  --muted: #9c9c9c;
-  --white: #ffffff;
+      --text: #f5f5f5;
+      --muted: #9c9c9c;
+      --white: #ffffff;
 
-  --orange: #ff7b00;
-}
+      --orange: #ff7b00;
+    }
 
     *,
     *::before,
@@ -56,16 +58,17 @@ nav a {
       scroll-behavior: smooth;
     }
 
- body {
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255, 123, 0, .16), transparent 28%),
-    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, .05), transparent 30%),
-    linear-gradient(135deg, #050505 0%, #0f0f0f 45%, #000000 100%);
-  color: var(--text);
-  font-family: 'Syne', sans-serif;
-  overflow-x: hidden;
-  cursor: none;
-}
+    body {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 123, 0, .16), transparent 28%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, .05), transparent 30%),
+        linear-gradient(135deg, #050505 0%, #0f0f0f 45%, #000000 100%);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
     /* LOADER */
     #loader {
       position: fixed;
@@ -154,49 +157,49 @@ nav a {
       pointer-events: none;
     }
 
- /* 3D ARROW CYBER CURSOR */
-#cursor {
-  position: fixed;
-  width: 28px;
-  height: 28px;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-4px, -4px) rotate(-20deg);
-  background: linear-gradient(135deg, #ffffff, var(--cyan), var(--orange));
-  clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
-  box-shadow:
-    0 0 12px var(--cyan),
-    0 0 28px var(--glow);
-  transition: transform .18s ease, width .18s ease, height .18s ease;
-}
+    /* 3D ARROW CYBER CURSOR */
+    #cursor {
+      position: fixed;
+      width: 28px;
+      height: 28px;
+      pointer-events: none;
+      z-index: 99999;
+      transform: translate(-4px, -4px) rotate(-20deg);
+      background: linear-gradient(135deg, #ffffff, var(--cyan), var(--orange));
+      clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
+      box-shadow:
+        0 0 12px var(--cyan),
+        0 0 28px var(--glow);
+      transition: transform .18s ease, width .18s ease, height .18s ease;
+    }
 
-#cursor::after {
-  content: '';
-  position: absolute;
-  inset: 5px;
-  background: #03050a;
-  clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
-  opacity: .65;
-}
+    #cursor::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      background: #03050a;
+      clip-path: polygon(0 0, 100% 45%, 55% 58%, 45% 100%);
+      opacity: .65;
+    }
 
-.cursor-trail {
-  position: fixed;
-  width: 8px;
-  height: 8px;
-  pointer-events: none;
-  z-index: 99998;
-  border-radius: 50%;
-  background: var(--cyan);
-  box-shadow: 0 0 18px var(--cyan);
-  transform: translate(-50%, -50%);
-}
+    .cursor-trail {
+      position: fixed;
+      width: 8px;
+      height: 8px;
+      pointer-events: none;
+      z-index: 99998;
+      border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 18px var(--cyan);
+      transform: translate(-50%, -50%);
+    }
 
-#cursor.hover {
-  width: 42px;
-  height: 42px;
-  transform: translate(-4px, -4px) rotate(15deg) scale(1.15);
-  background: linear-gradient(135deg, #ffffff, var(--orange), var(--cyan));
-}
+    #cursor.hover {
+      width: 42px;
+      height: 42px;
+      transform: translate(-4px, -4px) rotate(15deg) scale(1.15);
+      background: linear-gradient(135deg, #ffffff, var(--orange), var(--cyan));
+    }
 
     /* NAV */
     nav {
@@ -272,28 +275,29 @@ nav a {
       z-index: 1;
     }
 
-.hero-grid {
-  position: absolute;
-  inset: -50%;
-  background:
-    linear-gradient(rgba(255, 123, 0, .08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 123, 0, .08) 1px, transparent 1px);
-  background-size: 70px 70px;
-  transform: perspective(900px) rotateX(62deg) translateY(-160px);
-  transform-origin: center;
-  animation: grid3dMove 10s linear infinite;
-  opacity: .65;
-}
+    .hero-grid {
+      position: absolute;
+      inset: -50%;
+      background:
+        linear-gradient(rgba(255, 123, 0, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 123, 0, .08) 1px, transparent 1px);
+      background-size: 70px 70px;
+      transform: perspective(900px) rotateX(62deg) translateY(-160px);
+      transform-origin: center;
+      animation: grid3dMove 10s linear infinite;
+      opacity: .65;
+    }
 
-@keyframes grid3dMove {
-  0% {
-    background-position: 0 0;
-  }
+    @keyframes grid3dMove {
+      0% {
+        background-position: 0 0;
+      }
 
-  100% {
-    background-position: 70px 70px;
-  }
-}
+      100% {
+        background-position: 70px 70px;
+      }
+    }
+
     .scanline {
       position: absolute;
       left: 0;
@@ -322,31 +326,31 @@ nav a {
     }
 
     .orb-1 {
-  width: 520px;
-  height: 520px;
-  background: rgba(255, 123, 0, .16);
-  right: -80px;
-  top: -120px;
-  animation: o1 10s ease-in-out infinite;
-}
+      width: 520px;
+      height: 520px;
+      background: rgba(255, 123, 0, .16);
+      right: -80px;
+      top: -120px;
+      animation: o1 10s ease-in-out infinite;
+    }
 
-.orb-2 {
-  width: 340px;
-  height: 340px;
-  background: rgba(255, 159, 67, .13);
-  right: 22%;
-  bottom: 8%;
-  animation: o2 8s ease-in-out infinite;
-}
+    .orb-2 {
+      width: 340px;
+      height: 340px;
+      background: rgba(255, 159, 67, .13);
+      right: 22%;
+      bottom: 8%;
+      animation: o2 8s ease-in-out infinite;
+    }
 
-.orb-3 {
-  width: 240px;
-  height: 240px;
-  background: rgba(255, 255, 255, .06);
-  left: 5%;
-  bottom: 25%;
-  animation: o3 12s ease-in-out infinite;
-}
+    .orb-3 {
+      width: 240px;
+      height: 240px;
+      background: rgba(255, 255, 255, .06);
+      left: 5%;
+      bottom: 25%;
+      animation: o3 12s ease-in-out infinite;
+    }
 
     @keyframes o1 {
 
@@ -733,7 +737,7 @@ nav a {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 70px;
-      align-items: center;
+      align-items: start;
     }
 
     .about-text p {
@@ -1486,6 +1490,7 @@ nav a {
         padding: 0 6vw;
       }
     }
+    
   </style>
 </head>
 
@@ -1523,7 +1528,7 @@ nav a {
       <span class="line">AKSHAY</span>
       <span class="line" data-text="KUMAR T">KUMAR T</span>
     </h1>
-    <p class="hero-role">Building resilient Oracle EBS systems, crafting full-stack web experiences,<br>and pioneering
+    <p class="hero-role">Building resilient Oracle EBS systems, crafting full-stack web experiences,and pioneering
       GenAI-powered enterprise automation.</p>
     <div class="typewriter-wrap"><span id="tw"></span></div>
     <div class="hero-cta">
@@ -1541,14 +1546,28 @@ nav a {
     <h2 class="section-title"><span class="word">Who</span><span class="word">I</span><span class="word">Am</span></h2>
     <div class="about-grid">
       <div class="about-text reveal-left">
-        <p>I'm <strong>Akshaya Kumar T</strong>, an Oracle Apps DBA and Full-Stack Developer with a passion for
-          engineering systems that are as robust as they are elegant. Currently at <strong>Cognizant Technology
-            Solutions</strong>, I manage Oracle EBS R12 environments and architect automation pipelines.</p>
-        <p>My background blends deep <strong>database engineering</strong> — RMAN, PL/SQL, Flashback, Data Guard — with
-          modern DevOps tooling like <strong>Jenkins, Docker</strong>. On the dev side, I build
-          full-stack web apps with Node.js and MongoDB.</p>
-        <p>Right now, I'm channeling curiosity into <strong>Generative AI & LLM integration</strong>, exploring how
-          intelligent automation can transform enterprise Oracle workflows.</p>
+        <p>
+          I'm <strong>Akshaya Kumar T</strong>, an Oracle Apps DBA and Full-Stack Developer passionate about building
+          scalable systems, automation solutions, and modern web applications. I worked at <strong>Cognizant Technology
+            Solutions</strong>, where I handled Oracle EBS R12 administration, database operations, automation
+          scripting, and system monitoring.
+        </p>
+        <p>
+          My technical background combines <strong>Oracle database engineering</strong> — including RMAN, PL/SQL,
+          Flashback, Data Guard, and Shell Scripting — with modern development technologies such as <strong>Node.js,
+            MongoDB, React.js, and DevOps tools</strong>.
+        </p>
+
+        <p>
+          I also build real-world projects focused on automation, monitoring, and business solutions, including
+          <strong>OpsGuardian</strong> (real-time system monitoring) and a <strong>PG Management System</strong> for
+          smart tenant and room management.
+        </p>
+
+        <p>
+          Currently, I’m exploring <strong>Generative AI, LLM integration, and AI-powered automation</strong> to create
+          intelligent systems that improve enterprise workflows and real-world user experiences.
+        </p>
         <div class="skill-bar-section">
           <div class="skill-bar-item">
             <div class="skill-bar-label">Oracle EBS / DBA <span>90%</span></div>
@@ -1598,15 +1617,18 @@ nav a {
         <div class="skill-cat-label">Database & Oracle</div>
         <div class="tags"><span class="tag">Oracle EBS R12</span><span class="tag">Oracle SQL</span><span
             class="tag">PL/SQL</span><span class="tag">RMAN</span><span class="tag">Data Guard</span>
-            <span class="tag">Archive Logs</span><span class="tag">Alert Log
-            Monitoring</span><span class="tag">SQL Developer</span></div>
+          <span class="tag">Archive Logs</span><span class="tag">Alert Log
+            Monitoring</span><span class="tag">SQL Developer</span>
+        </div>
       </div>
       <div class="skill-category reveal reveal-delay-2">
         <div class="glow-spot"></div>
         <div class="skill-cat-label">DevOps & Automation</div>
         <div class="tags"><span class="tag">Jenkins</span><span class="tag">Docker</span>
-          <span class="tag">CI/CD Pipelines</span><span class="tag">Shell Scripting</span><span class="tag">Git & GitHub</span><span class="tag">Vercel</span><span class="tag">Linux
-            (Ubuntu)</span></div>
+          <span class="tag">CI/CD Pipelines</span><span class="tag">Shell Scripting</span><span class="tag">Git &
+            GitHub</span><span class="tag">Vercel</span><span class="tag">Linux
+            (Ubuntu)</span>
+        </div>
       </div>
       <div class="skill-category reveal reveal-delay-3">
         <div class="glow-spot"></div>
@@ -1678,6 +1700,50 @@ nav a {
     <div class="projects-grid">
       <div class="project-card reveal reveal-delay-1">
         <div class="project-num">001</div>
+        <div class="project-name">OpsGuardian — Real-Time System Monitoring App</div>
+
+        <p class="project-desc">
+          OpsGuardian is a real-time system monitoring application that tracks CPU, memory, and disk usage.
+          It stores live metrics in SQLite, displays them on a dashboard, and sends alert notifications when
+          system usage crosses the limit. Built to understand real-world DevOps monitoring and automation.
+        </p>
+
+        <div class="project-stack">
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">SQLite</span>
+          <span class="stack-tag">psutil</span>
+          <span class="stack-tag">Chart.js</span>
+          <span class="stack-tag">Railway</span>
+          <span class="stack-tag">PyInstaller</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-num">002</div>
+
+        <div class="project-name">
+          PG Management System — Smart Tenant & Room Management App
+        </div>
+
+        <p class="project-desc">
+          A smart PG management application designed for hostel and PG owners to manage tenants,
+          room occupancy, rent tracking, reminders, and tenant records in one dashboard.
+          Includes tenant registration, room availability monitoring, unpaid tenant tracking,
+          and automated reminder features for efficient property management.
+        </p>
+
+        <div class="project-stack">
+          <span class="stack-tag">React.js</span>
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">Node.js</span>
+          <span class="stack-tag">Express.js</span>
+          <span class="stack-tag">WhatsApp API</span>
+          <span class="stack-tag">SMS Alerts</span>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-num">003</div>
         <div class="project-name">Creators Career Development Platform</div>
         <p class="project-desc">Full-stack web platform enabling creators to build customizable profiles, showcase
           projects, and access career development resources. RESTful APIs with Node.js and MongoDB handling dynamic
@@ -1687,7 +1753,7 @@ nav a {
             class="stack-tag">MongoDB</span></div>
       </div>
       <div class="project-card reveal reveal-delay-2">
-        <div class="project-num">002</div>
+        <div class="project-num">004</div>
         <div class="project-name">Oracle Alert Log Monitoring Automation</div>
         <p class="project-desc">Automated Shell script solution for real-time Oracle database alert log monitoring —
           significantly reducing error detection time and manual DBA intervention across production environments.</p>
@@ -1695,7 +1761,7 @@ nav a {
         </div>
       </div>
       <div class="project-card reveal reveal-delay-3">
-        <div class="project-num">003</div>
+        <div class="project-num">005</div>
         <div class="project-name">Responsive Full-Stack Web Application</div>
         <p class="project-desc">Cross-device responsive web application built with focus on accessibility, clean code
           architecture, and performance optimization during intensive full-stack training.</p>
@@ -1703,7 +1769,7 @@ nav a {
             class="stack-tag">JavaScript</span></div>
       </div>
       <div class="project-card reveal reveal-delay-1">
-        <div class="project-num">004</div>
+        <div class="project-num">006</div>
         <div class="project-name">Autonomous Line Follower Robot</div>
         <p class="project-desc">Autonomous line-follower robot using Arduino microcontrollers and IR sensors,
           demonstrated at the South Indian Hackathon (SIH) — showcasing embedded systems and real-time control
@@ -1856,75 +1922,75 @@ nav a {
     }
     drawP();
 
-// ── 3D ARROW CYBER CURSOR ──
-const cursor = document.getElementById('cursor');
+    // ── 3D ARROW CYBER CURSOR ──
+    const cursor = document.getElementById('cursor');
 
-let mx = 0, my = 0;
-let cx = 0, cy = 0;
+    let mx = 0, my = 0;
+    let cx = 0, cy = 0;
 
-const trails = Array.from({ length: 16 }, (_, i) => {
-  const d = document.createElement('div');
-  d.className = 'cursor-trail';
-  document.body.appendChild(d);
+    const trails = Array.from({ length: 16 }, (_, i) => {
+      const d = document.createElement('div');
+      d.className = 'cursor-trail';
+      document.body.appendChild(d);
 
-  return {
-    el: d,
-    x: 0,
-    y: 0,
-    size: Math.max(2, 9 - i * 0.45),
-    opacity: Math.max(0.05, 0.45 - i * 0.025)
-  };
-});
-
-window.addEventListener('mousemove', e => {
-  mx = e.clientX;
-  my = e.clientY;
-
-  if (typeof mouse !== 'undefined') {
-    mouse.x = mx;
-    mouse.y = my;
-  }
-});
-
-function animateCursor() {
-  cx += (mx - cx) * 0.45;
-  cy += (my - cy) * 0.45;
-
-  cursor.style.left = cx + 'px';
-  cursor.style.top = cy + 'px';
-
-  let tx = mx;
-  let ty = my;
-
-  trails.forEach(trail => {
-    trail.x += (tx - trail.x) * 0.28;
-    trail.y += (ty - trail.y) * 0.28;
-
-    trail.el.style.left = trail.x + 'px';
-    trail.el.style.top = trail.y + 'px';
-    trail.el.style.width = trail.size + 'px';
-    trail.el.style.height = trail.size + 'px';
-    trail.el.style.opacity = trail.opacity;
-
-    tx = trail.x;
-    ty = trail.y;
-  });
-
-  requestAnimationFrame(animateCursor);
-}
-
-animateCursor();
-
-document.querySelectorAll('a, button, .project-card, .skill-category, .stat-box, .tag, .btn, .contact-link')
-  .forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.classList.add('hover');
+      return {
+        el: d,
+        x: 0,
+        y: 0,
+        size: Math.max(2, 9 - i * 0.45),
+        opacity: Math.max(0.05, 0.45 - i * 0.025)
+      };
     });
 
-    el.addEventListener('mouseleave', () => {
-      cursor.classList.remove('hover');
+    window.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+
+      if (typeof mouse !== 'undefined') {
+        mouse.x = mx;
+        mouse.y = my;
+      }
     });
-  });
+
+    function animateCursor() {
+      cx += (mx - cx) * 0.45;
+      cy += (my - cy) * 0.45;
+
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+
+      let tx = mx;
+      let ty = my;
+
+      trails.forEach(trail => {
+        trail.x += (tx - trail.x) * 0.28;
+        trail.y += (ty - trail.y) * 0.28;
+
+        trail.el.style.left = trail.x + 'px';
+        trail.el.style.top = trail.y + 'px';
+        trail.el.style.width = trail.size + 'px';
+        trail.el.style.height = trail.size + 'px';
+        trail.el.style.opacity = trail.opacity;
+
+        tx = trail.x;
+        ty = trail.y;
+      });
+
+      requestAnimationFrame(animateCursor);
+    }
+
+    animateCursor();
+
+    document.querySelectorAll('a, button, .project-card, .skill-category, .stat-box, .tag, .btn, .contact-link')
+      .forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursor.classList.add('hover');
+        });
+
+        el.addEventListener('mouseleave', () => {
+          cursor.classList.remove('hover');
+        });
+      });
 
     // ── TYPEWRITER ──
     const phrases = ['Oracle Apps DBA', 'Full-Stack Developer', 'Shell Script Automator', 'GenAI Explorer', 'CI/CD Engineer', 'PL/SQL Developer'];
