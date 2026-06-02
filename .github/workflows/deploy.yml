@@ -3,7 +3,7 @@ name: Deploy Portfolio
 on:
   push:
     branches:
-      - main
+      - main2
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
